@@ -1,5 +1,5 @@
 test
 test.dSYM
-.DS_STORE
-.pyc
+*.DS_STORE
+*.pyc
 conf.cfg

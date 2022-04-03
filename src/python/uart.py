@@ -1,6 +1,6 @@
 import serial, ConfigParser
 config = ConfigParser.ConfigParser()
-config.readfp(open("../../conf.cfg"))
+config.readfp(open("conf.cfg"))
 
 ser = serial.Serial(config.get("UART", "PORT"), config.get("UART", "BAUD_RATE"))
 
