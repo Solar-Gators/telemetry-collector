@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include "inc/DataLinkRecive.hpp"
 
+void DataLinkReceive::init() {
+    this->flush();
+}
+
 void DataLinkReceive::flush() {
     this->arrayIndex = 0;
     this->escaped = false;

@@ -7,6 +7,8 @@ int main(int argc, char *argv[]) {
     scripts.init();
 
     DataLinkReceive dataLink;
+    dataLink.init();
+
     int timeout = 0;
 
     while (timeout < 30) {

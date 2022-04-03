@@ -12,6 +12,7 @@ class DataLinkReceive {
     public:
         u_int8_t buffer[MAX_BUFFER_SIZE];
         int arrayIndex;
+        void init();
         void flush();
 
         bool read(u_int8_t data);
