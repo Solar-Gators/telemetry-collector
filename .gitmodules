@@ -1,0 +1,3 @@
+[submodule "CAN-Decoder"]
+	path = CAN-Decoder
+	url = https://github.com/Solar-Gators/CAN-Decoder
