@@ -10,8 +10,8 @@ class PythonScripts {
     public:
         int init();
         PyObject* loadModule(const char *name);
-    
+
         int readUART();
 
-        void sendData(PyObject *parameters);
+        void sendData(char* path, PyObject *parameters);
 };

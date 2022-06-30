@@ -1,8 +1,7 @@
 import requests
 
-def run(p):
-    print(p)
+def run(path, body):
     requests.post(
-        "http://172.20.10.4:9000/api/mitsuba",
-        json=p
+        "http://172.20.10.4:9000/" + path,
+        json=body
     )

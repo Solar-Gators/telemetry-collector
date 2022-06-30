@@ -35,7 +35,17 @@ int PythonScripts::readUART() {
     return value;
 }
 
-void PythonScripts::sendData(PyObject *parameters) {
+void PythonScripts::sendData(char* path, PyObject *parameters) {
     PyObject *method = PyString_FromString("run");
-    PyObject *response = PyObject_CallMethodObjArgs(this->httpModule, method, parameters, NULL);
+    pyObject *pathPy = PyString_FromString(path);
+    PyObject *response = PyObject_CallMethodObjArgs(
+        this->httpModule,
+        method,
+        parameters,
+        pathPy,
+        NULL
+    );
+    Py_DECREF(method);
+    Py_DECREF(pathPy);
+    Py_DECREF(response);
 }
