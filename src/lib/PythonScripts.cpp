@@ -5,7 +5,7 @@ int PythonScripts::init() {
     PyRun_SimpleString("import sys");
     PyRun_SimpleString("sys.path.append(\"./src/python\")");
     this->uartModule = this->loadModule("uart");
-    this->httpModule = this->loadModule("dict");
+    this->httpModule = this->loadModule("http");
     return 0;
 }
 
@@ -35,14 +35,7 @@ int PythonScripts::readUART() {
     return value;
 }
 
-void PythonScripts::sendData() {
-    PyObject *parameters = PyDict_New();
-    PyObject *world = PyString_FromString("World");
-    PyDict_SetItemString(parameters, "Hellos", world);
+void PythonScripts::sendData(PyObject *parameters) {
     PyObject *method = PyString_FromString("run");
     PyObject *response = PyObject_CallMethodObjArgs(this->httpModule, method, parameters, NULL);
-    Py_DECREF(parameters);
-    Py_DECREF(method);
-    Py_DECREF(world);
-    Py_DECREF(response);
 }

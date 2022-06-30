@@ -7,4 +7,5 @@ ser = serial.Serial(config.get("UART", "PORT"), config.get("UART", "BAUD_RATE"))
 def wait_for_transmission():
     global ser
     d = ser.read(1)
+    print(d)
     return ord(d[0])

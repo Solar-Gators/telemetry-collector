@@ -13,5 +13,5 @@ class PythonScripts {
     
         int readUART();
 
-        void sendData();
+        void sendData(PyObject *parameters);
 };
