@@ -3,6 +3,9 @@
 #else
 #include <Python.h>
 #endif
+
+#ifndef PythonScripts_H
+#define PythonScripts_H
 class PythonScripts {
     private:
         PyObject *uartModule;
@@ -13,5 +16,6 @@ class PythonScripts {
 
         int readUART();
 
-        void sendData(char* path, PyObject *parameters);
+        void send(const char* path, PyObject *parameters);
 };
+#endif

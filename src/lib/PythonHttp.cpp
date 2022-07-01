@@ -5,19 +5,35 @@ void PythonHttp::init() {
     parameters = PyDict_New();
 }
 
-void PythonHttp::addData(char* name, uint32_t data) {
+void PythonHttp::addData(const char* name, int16_t data) {
     addParameter(
-      PyLong_FromLong(data)
-    );
-}
-
-void PythonHttp::addData(char* name, uint16_t data) {
-    addParameter(
+        name,
         PyLong_FromLong(data)
     );
 }
 
-void PythonHttp::addData(char* name, bool data) {
+void PythonHttp::addData(const char* name, uint32_t data) {
+    addParameter(
+        name,
+        PyLong_FromLong(data)
+    );
+}
+
+void PythonHttp::addData(const char* name, uint16_t data) {
+    addParameter(
+        name,
+        PyLong_FromLong(data)
+    );
+}
+
+void PythonHttp::addData(const char* name, uint8_t data) {
+    addParameter(
+        name,
+        PyLong_FromLong(data)
+    );
+}
+
+void PythonHttp::addData(const char* name, bool data) {
     PyObject *value;
     if (data) {
         value = Py_True;
@@ -26,7 +42,7 @@ void PythonHttp::addData(char* name, bool data) {
         value = Py_False;
     }
 
-    addParameter(value);
+    addParameter(name, value);
 }
 
 PyObject * PythonHttp::getParameters() {
@@ -38,6 +54,6 @@ void PythonHttp::flush() {
 }
 
 //private methods
-void PythonHttp::addParameter(char* name, PyObject* value) {
+void PythonHttp::addParameter(const char* name, PyObject* value) {
     PyDict_SetItemString(parameters, name, value);
 }

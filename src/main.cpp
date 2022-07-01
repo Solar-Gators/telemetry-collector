@@ -1,10 +1,11 @@
 #include <map>
 #include <iostream>
 #include <sstream>
-#include "lib/inc/DataLinkRecive.hpp"
-#include "lib/inc/PythonScripts.hpp"
-#include "lib/inc/NetworkReceive.hpp"
-#include <Mitsuba.hpp>
+#include "DataLinkRecive.hpp"
+#include "PythonScripts.hpp"
+#include "NetworkReceive.hpp"
+#include "DataModule.hpp"
+#include "Mitsuba.hpp"
 
 int main(int argc, char *argv[]) {
     PythonScripts scripts;
@@ -30,44 +31,8 @@ int main(int argc, char *argv[]) {
 
         //Get module
         SolarGators::DataModules::DataModule* rx_module = (*modules.find(network.can_id)).second;
-        rx_module->FromByteArray();
-        rx_module->PostTelemetry();
-
-        // if (network.can_id == mit.can_id_) {
-            // mit.FromByteArray(network.data);
-            // PyObject *parameters = PyDict_New();
-            // PyDict_SetItemString(parameters, "battVoltage",
-            //     PyLong_FromLong(mit.GetBatteryVoltage())
-            // );
-
-            // PyDict_SetItemString(parameters, "battCurrent",
-            //     PyLong_FromLong(mit.GetBatteryCurrent())
-            // );
-
-            // PyDict_SetItemString(parameters, "motorCurrentPkAvg",
-            //     PyLong_FromLong(mit.GetMotorCurrentPkAvg())
-            // );
-
-            // PyDict_SetItemString(parameters, "FETtemp",
-            //     PyLong_FromLong(mit.GetFetTemp())
-            // );
-
-            // PyDict_SetItemString(parameters, "motorRPM",
-            //     PyLong_FromLong(mit.GetMotorRPM())
-            // );
-
-            // PyDict_SetItemString(parameters, "PWMDuty",
-            //     PyLong_FromLong(mit.GetPWMDuty())
-            // );
-
-            // PyDict_SetItemString(parameters, "LeadAngle",
-            //     PyLong_FromLong(mit.GetLeadAngle())
-            // );
-            // scripts.sendData(parameters);
-
-            // dataLink.flush();
-        // }
-
+        rx_module->FromByteArray(network.data);
+        rx_module->PostTelemetry(&scripts);
         dataLink.flush();
     }
 

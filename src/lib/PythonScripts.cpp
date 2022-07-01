@@ -1,4 +1,4 @@
-#include "inc/PythonScripts.hpp"
+#include <PythonScripts.hpp>
 
 int PythonScripts::init() {
     Py_Initialize();
@@ -35,9 +35,9 @@ int PythonScripts::readUART() {
     return value;
 }
 
-void PythonScripts::sendData(char* path, PyObject *parameters) {
+void PythonScripts::send(const char* path, PyObject *parameters) {
     PyObject *method = PyString_FromString("run");
-    pyObject *pathPy = PyString_FromString(path);
+    PyObject *pathPy = PyString_FromString(path);
     PyObject *response = PyObject_CallMethodObjArgs(
         this->httpModule,
         method,
