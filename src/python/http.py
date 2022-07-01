@@ -2,6 +2,6 @@ import requests
 
 def run(path, body):
     requests.post(
-        "http://172.20.10.4:9000/api/" + path,
+        "http://localhost:9000/api/" + path,
         json=body
     )

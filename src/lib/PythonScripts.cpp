@@ -23,7 +23,7 @@ int PythonScripts::readUART() {
     PyObject *byte = PyObject_CallFunction(wait_for_transmission, NULL);
     int value = 0;
     if (byte != NULL) {
-        value = _PyInt_AsInt(byte);
+        value = _PyLong_AsInt(byte);
         // printf("Result of call: %d\n", value);
     }
     else {
@@ -36,8 +36,8 @@ int PythonScripts::readUART() {
 }
 
 void PythonScripts::send(const char* path, PyObject *parameters) {
-    PyObject *method = PyString_FromString("run");
-    PyObject *pathPy = PyString_FromString(path);
+    PyObject *method = PyUnicode_FromString("run");
+    PyObject *pathPy = PyUnicode_FromString(path);
     PyObject *response = PyObject_CallMethodObjArgs(
         this->httpModule,
         method,
