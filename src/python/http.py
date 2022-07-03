@@ -1,7 +1,9 @@
-import requests
+# import requests
 
-def run(path, body):
-    requests.post(
-        "http://localhost:9000/api/" + path,
-        json=body
-    )
+def runs(p1, p2):
+    # requests.post(
+    #     "http://localhost:9000/api/" + path,
+    #     json=body
+    # )
+    # print(path, body)
+    print(p1, p2)

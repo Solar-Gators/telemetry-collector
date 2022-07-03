@@ -6,6 +6,16 @@
 #include "NetworkReceive.hpp"
 #include "DataModule.hpp"
 #include "Mitsuba.hpp"
+#include "Mitsuba.hpp"
+#include "OrionBMS.hpp"
+#include "DataModuleInfo.hpp"
+
+SolarGators::DataModules::MitsubaRx0 MitsubaRx0(SolarGators::DataModuleInfo::MOTORRX0_RL_MSG_ID, 0);
+SolarGators::DataModules::MitsubaRx1 MitsubaRx1(SolarGators::DataModuleInfo::MOTORRX1_RL_MSG_ID, 0);
+SolarGators::DataModules::MitsubaRx2 MitsubaRx2(SolarGators::DataModuleInfo::MOTORRX2_RL_MSG_ID, 0);
+
+SolarGators::DataModules::OrionBMSRx0 OrionBMSRx0(SolarGators::DataModuleInfo::BMS_RX0_MSG_ID, 0);
+SolarGators::DataModules::OrionBMSRx4 OrionBMSRx4(SolarGators::DataModuleInfo::BMS_RX4_MSG_ID, 0);
 
 int main(int argc, char *argv[]) {
     PythonScripts scripts;
@@ -15,10 +25,14 @@ int main(int argc, char *argv[]) {
     dataLink.init();
 
     std::map<int, SolarGators::DataModules::DataModule*> modules;
-    SolarGators::DataModules::MitsubaRx0 mit(0x08850225, 0);
+
 
     // //Data module registration
-    modules.insert(std::make_pair(mit.can_id_, &mit));
+    modules.insert(std::make_pair(MitsubaRx0.can_id_, &MitsubaRx0));
+    modules.insert(std::make_pair(MitsubaRx1.can_id_, &MitsubaRx1));
+    modules.insert(std::make_pair(MitsubaRx2.can_id_, &MitsubaRx2));
+    modules.insert(std::make_pair(OrionBMSRx4.can_id_, &OrionBMSRx4));
+    // modules.insert(std::make_pair(OrionBMSRx0.can_id_, &OrionBMSRx0));
 
 
     NetworkReceive network;
@@ -27,12 +41,14 @@ int main(int argc, char *argv[]) {
         if (!dataLink.read(data)) {
             continue;
         }
-        network.fromByteArray(dataLink.buffer);
 
+        network.fromByteArray(dataLink.buffer);
         //Get module
         SolarGators::DataModules::DataModule* rx_module = (*modules.find(network.can_id)).second;
-        rx_module->FromByteArray(network.data);
-        rx_module->PostTelemetry(&scripts);
+        if (modules.count(network.can_id) > 0) {
+            rx_module->FromByteArray(network.data);
+            rx_module->PostTelemetry(&scripts);
+        }
         dataLink.flush();
     }
 

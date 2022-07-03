@@ -36,16 +36,17 @@ int PythonScripts::readUART() {
 }
 
 void PythonScripts::send(const char* path, PyObject *parameters) {
-    PyObject *method = PyUnicode_FromString("run");
+    PyObject *method = PyUnicode_FromString("runs");
     PyObject *pathPy = PyUnicode_FromString(path);
     PyObject *response = PyObject_CallMethodObjArgs(
-        this->httpModule,
+        this->uartModule,
         method,
-        parameters,
         pathPy,
+        parameters,
         NULL
     );
-    Py_DECREF(method);
-    Py_DECREF(pathPy);
-    Py_DECREF(response);
+    if (response == NULL) {
+        printf("Error reading value\n");
+        PyErr_Print();
+    }
 }
