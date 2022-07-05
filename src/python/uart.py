@@ -6,7 +6,7 @@ ser = serial.Serial(config.get("UART", "PORT"), config.get("UART", "BAUD_RATE"))
 
 def runs(path, body):
     requests.post(
-        "http://172.20.10.4:9000/api/" + path,
+        "http://localhost:9000/api/" + path,
         json=body
     )
 
