@@ -33,6 +33,14 @@ void PythonHttp::addData(const char* name, uint8_t data) {
     );
 }
 
+void PythonHttp::addData(const char* name, float data) {
+    addParameter(
+        name,
+        PyFloat_FromDouble(data)
+    );
+}
+
+
 void PythonHttp::addData(const char* name, bool data) {
     PyObject *value;
     if (data) {

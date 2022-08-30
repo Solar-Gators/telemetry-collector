@@ -14,6 +14,7 @@ class PythonHttp {
         void addData(const char* name, int16_t data);
         void addData(const char* name, uint8_t data);
         void addData(const char* name, bool data);
+        void addData(const char* name, float data);
         PyObject* getParameters();
         void flush();
 };
