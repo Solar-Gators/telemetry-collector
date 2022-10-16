@@ -1,0 +1,22 @@
+name: Integration Tests
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - run: make
+      - run: pip install -r requirements.txt
+
+  integration_tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: 'true'
+      - run: make
+      - run: pip install -r requirements.txt
+      - run: pip install -r ./tests/test-requirements.txt
+      - run: pytest ./tests/integration.py
