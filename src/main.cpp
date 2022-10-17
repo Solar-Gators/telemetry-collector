@@ -1,6 +1,7 @@
 #include <map>
 #include <iostream>
 #include <sstream>
+#include <csignal>
 #include "DataLinkRecive.hpp"
 #include "PythonScripts.hpp"
 #include "NetworkReceive.hpp"
@@ -21,7 +22,14 @@ SolarGators::DataModules::OrionBMSRx3 OrionBMSRx3(SolarGators::DataModuleInfo::B
 SolarGators::DataModules::OrionBMSRx4 OrionBMSRx4(SolarGators::DataModuleInfo::BMS_RX4_MSG_ID, 0);
 SolarGators::DataModules::OrionBMSRx5 OrionBMSRx5(SolarGators::DataModuleInfo::BMS_RX5_MSG_ID, 0);
 
+void signalHandler( int signum ) {
+   exit(0);
+}
+
+
 int main(int argc, char *argv[]) {
+    signal(SIGTERM, signalHandler);
+
     PythonScripts scripts;
     scripts.init();
 

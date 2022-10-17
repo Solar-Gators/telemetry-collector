@@ -14,7 +14,7 @@ def test_start_condition_error():
 
     assert collector.stdout.readline() == "Error: There must be a start condition before a transmission can occur\n"
 
-    collector.kill()
+    collector.terminate()
 
 @pytest.mark.timeout(4)
 def test_end_without_start():
@@ -28,7 +28,7 @@ def test_end_without_start():
 
     assert collector.stdout.readline() == "Error: There was an end condition without a start\n"
 
-    collector.kill()
+    collector.terminate()
 
 @pytest.mark.timeout(4)
 def test_multiple_start_conditions():
@@ -43,4 +43,4 @@ def test_multiple_start_conditions():
 
     assert collector.stdout.readline() == "Error: There was multiple start conditions\n"
 
-    collector.kill()
+    collector.terminate()
