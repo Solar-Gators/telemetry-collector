@@ -1,11 +1,12 @@
 #include <PythonScripts.hpp>
+#include <stdio.h>
+#include "Logger.hpp"
 
 int PythonScripts::init() {
     Py_Initialize();
     PyRun_SimpleString("import sys");
     PyRun_SimpleString("sys.path.append(\"./src/python\")");
     this->uartModule = this->loadModule("uart");
-    this->httpModule = this->loadModule("http");
     return 0;
 }
 
@@ -14,6 +15,11 @@ PyObject* PythonScripts::loadModule(const char *name) {
     if (module == NULL) {
         printf("Error loading a module\n");
         PyErr_Print();
+    }
+    else {
+        Logger::info("Loaded ");
+        Logger::info(name);
+        Logger::info("\n");
     }
     return module;
 }
