@@ -18,7 +18,7 @@ COVERAGE_FILE = coverage.info
 
 coverage-html:
 	lcov --no-external --directory . --capture -o $(COVERAGE_FILE) && \
-	lcov --remove $(COVERAGE_FILE) "/collector/CAN-Decoder/*" -o $(COVERAGE_FILE) && \
+	lcov --remove $(COVERAGE_FILE) "*CAN-Decoder/*" -o $(COVERAGE_FILE) && \
 	genhtml --demangle-cpp -o coverage $(COVERAGE_FILE)
 
 clean:
