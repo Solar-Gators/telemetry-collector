@@ -19,12 +19,6 @@ jobs:
           tags: name/app:latest
           outputs: type=oci,dest=/tmp/image.tar
 
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: app
-          path: /tmp/image.tar
-
   integration_tests:
     runs-on: ubuntu-latest
     steps:
