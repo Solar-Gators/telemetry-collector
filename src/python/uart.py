@@ -1,12 +1,10 @@
-import serial, configparser, requests
-config = configparser.ConfigParser()
-config.readfp(open("conf.cfg"))
+import serial, requests, os
 
-ser = serial.Serial(config.get("UART", "PORT"), config.get("UART", "BAUD_RATE"))
+ser = serial.Serial(os.environ.get("UART_PORT"), os.environ.get("UART_BAUD_RATE"))
 
 def runs(path, body):
     requests.post(
-        "http://localhost:9000/api/" + path,
+        f"{os.environ.get('GUI_SERVICE')}/api/{path}",
         json=body
     )
 

@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include "inc/DataLinkRecive.hpp"
+#include "Logger.hpp"
 
 void DataLinkReceive::init() {
     this->flush();
@@ -25,7 +25,7 @@ bool DataLinkReceive::read(u_int8_t data) {
     if (data == START) {
         if (this->in_progress) {
             this->flush();
-            printf("Error: There was multiple start conditions\n, data: %d", data);
+            Logger::info("Error: There was multiple start conditions\n");
             return false;
         }
         this->in_progress = true;
@@ -35,7 +35,7 @@ bool DataLinkReceive::read(u_int8_t data) {
     if (data == END) {
         if (!this->in_progress) {
             this->flush();
-            printf("Error: There was an end condition without a start\n");
+            Logger::info("Error: There was an end condition without a start\n");
             return false;
         }
         this->in_progress = false;
@@ -44,7 +44,7 @@ bool DataLinkReceive::read(u_int8_t data) {
 
     if (!this->in_progress) {
         this->flush();
-        printf("Error: There must be a start condition before a transmission can occour\n");
+        Logger::info("Error: There must be a start condition before a transmission can occur\n");
         return false;
     }
 

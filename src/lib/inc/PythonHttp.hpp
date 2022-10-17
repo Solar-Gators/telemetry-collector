@@ -1,8 +1,4 @@
-#ifdef __APPLE__
-#include <Python/Python.h>
-#else
 #include <Python.h>
-#endif
 class PythonHttp {
     private:
         PyObject *parameters;
