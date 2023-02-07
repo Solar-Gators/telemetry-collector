@@ -6,7 +6,7 @@ CPP_INCLUDES = -I ./CAN-Decoder/src/DataModules/inc -I ./src/lib/inc
 
 EXECUTABLE = collector
 
-BASE_COMPILE = g++ -D IS_TELEMETRY $(shell python3-config --cflags --embed) -o $(EXECUTABLE)  $(CPP_INCLUDES) $(CPP_FILES) $(shell python3-config --embed --ldflags) -fPIE
+BASE_COMPILE = g++ -std=c++11 -D IS_TELEMETRY $(shell python3-config --cflags --embed) -o $(EXECUTABLE)  $(CPP_INCLUDES) $(CPP_FILES) $(shell python3-config --embed --ldflags) -fPIE
 
 all:
 	$(BASE_COMPILE)
