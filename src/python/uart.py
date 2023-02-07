@@ -14,10 +14,10 @@ def runs(path, body):
         "model": path,
         **body,
     }).encode()
-    sock.sendto(data, (INTERNAL_UDP_PORT, INTERNAL_UDP_PORT))
+    sock.sendto(data, (INTERNAL_UDP_HOST, int(INTERNAL_UDP_PORT)))
     # Try to send to external server, but if it fails then ignore it
     try:
-        sock.sendto(data, (EXTERNAL_UDP_PORT, EXTERNAL_UDP_HOST))
+        sock.sendto(data, (EXTERNAL_UDP_HOST, int(EXTERNAL_UDP_PORT)))
     except socket.error:
         pass
 
