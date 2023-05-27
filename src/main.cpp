@@ -11,6 +11,7 @@
 #include "OrionBMS.hpp"
 #include "PowerBoard.hpp"
 #include "DataModuleInfo.hpp"
+@include "Mppt.hpp"
 
 SolarGators::DataModules::MitsubaRx0 MitsubaRx0(SolarGators::DataModuleInfo::MOTORRX0_RL_MSG_ID, 0);
 SolarGators::DataModules::MitsubaRx1 MitsubaRx1(SolarGators::DataModuleInfo::MOTORRX1_RL_MSG_ID, 0);
@@ -33,9 +34,9 @@ SolarGators::DataModules::Mpptx1 MPPT0_Rx_1(SolarGators::DataModuleInfo::MPPT0_M
 SolarGators::DataModules::Mpptx1 MPPT1_Rx_1(SolarGators::DataModuleInfo::MPPT1_MSG_ID + 1);
 SolarGators::DataModules::Mpptx1 MPPT2_Rx_1(SolarGators::DataModuleInfo::MPPT2_MSG_ID + 1);
 
-SolarGators::DataModules::Mpptx1 MPPT0_Rx_5(SolarGators::DataModuleInfo::MPPT0_MSG_ID + 5);
-SolarGators::DataModules::Mpptx1 MPPT1_Rx_5(SolarGators::DataModuleInfo::MPPT1_MSG_ID + 5);
-SolarGators::DataModules::Mpptx1 MPPT2_Rx_5(SolarGators::DataModuleInfo::MPPT2_MSG_ID + 5);
+SolarGators::DataModules::Mpptx5 MPPT0_Rx_5(SolarGators::DataModuleInfo::MPPT0_MSG_ID + 5);
+SolarGators::DataModules::Mpptx5 MPPT1_Rx_5(SolarGators::DataModuleInfo::MPPT1_MSG_ID + 5);
+SolarGators::DataModules::Mpptx5 MPPT2_Rx_5(SolarGators::DataModuleInfo::MPPT2_MSG_ID + 5);
 //SolarGators::DataModules::PowerBoard PBoard(SolarGators::DataModuleInfo::POWER_BOARD_ID, 0);
 
 
