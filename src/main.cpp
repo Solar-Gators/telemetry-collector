@@ -26,17 +26,17 @@ SolarGators::DataModules::OrionBMSRx5 OrionBMSRx5(SolarGators::DataModuleInfo::B
 
 //registering mppt data modules
 //there are several more modules than this, but i only want to register essential info from each
-SolarGators::DataModules::Mpptx0 MPPT0_Rx_0(SolarGators::DataModuleInfo::MPPT0_MSG_ID);
-SolarGators::DataModules::Mpptx0 MPPT1_Rx_0(SolarGators::DataModuleInfo::MPPT1_MSG_ID);
-SolarGators::DataModules::Mpptx0 MPPT2_Rx_0(SolarGators::DataModuleInfo::MPPT2_MSG_ID);
+SolarGators::DataModules::Mpptx0 MPPT0_Rx_0(SolarGators::DataModuleInfo::MPPT0_RX0_MSG_ID);
+SolarGators::DataModules::Mpptx0 MPPT1_Rx_0(SolarGators::DataModuleInfo::MPPT1_RX0_MSG_ID);
+SolarGators::DataModules::Mpptx0 MPPT2_Rx_0(SolarGators::DataModuleInfo::MPPT2_RX0_MSG_ID);
 
-SolarGators::DataModules::Mpptx1 MPPT0_Rx_1(SolarGators::DataModuleInfo::MPPT0_MSG_ID + 1);
-SolarGators::DataModules::Mpptx1 MPPT1_Rx_1(SolarGators::DataModuleInfo::MPPT1_MSG_ID + 1);
-SolarGators::DataModules::Mpptx1 MPPT2_Rx_1(SolarGators::DataModuleInfo::MPPT2_MSG_ID + 1);
+SolarGators::DataModules::Mpptx1 MPPT0_Rx_1(SolarGators::DataModuleInfo::MPPT0_RX1_MSG_ID);
+SolarGators::DataModules::Mpptx1 MPPT1_Rx_1(SolarGators::DataModuleInfo::MPPT1_RX1_MSG_ID);
+SolarGators::DataModules::Mpptx1 MPPT2_Rx_1(SolarGators::DataModuleInfo::MPPT2_RX1_MSG_ID);
 
-SolarGators::DataModules::Mpptx5 MPPT0_Rx_5(SolarGators::DataModuleInfo::MPPT0_MSG_ID + 5);
-SolarGators::DataModules::Mpptx5 MPPT1_Rx_5(SolarGators::DataModuleInfo::MPPT1_MSG_ID + 5);
-SolarGators::DataModules::Mpptx5 MPPT2_Rx_5(SolarGators::DataModuleInfo::MPPT2_MSG_ID + 5);
+SolarGators::DataModules::Mpptx5 MPPT0_Rx_5(SolarGators::DataModuleInfo::MPPT0_RX5_MSG_ID);
+SolarGators::DataModules::Mpptx5 MPPT1_Rx_5(SolarGators::DataModuleInfo::MPPT1_RX5_MSG_ID);
+SolarGators::DataModules::Mpptx5 MPPT2_Rx_5(SolarGators::DataModuleInfo::MPPT2_RX5_MSG_ID);
 //SolarGators::DataModules::PowerBoard PBoard(SolarGators::DataModuleInfo::POWER_BOARD_ID, 0);
 
 
