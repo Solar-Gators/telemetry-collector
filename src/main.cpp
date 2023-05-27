@@ -11,7 +11,7 @@
 #include "OrionBMS.hpp"
 #include "PowerBoard.hpp"
 #include "DataModuleInfo.hpp"
-@include "Mppt.hpp"
+#include "Mppt.hpp"
 
 SolarGators::DataModules::MitsubaRx0 MitsubaRx0(SolarGators::DataModuleInfo::MOTORRX0_RL_MSG_ID, 0);
 SolarGators::DataModules::MitsubaRx1 MitsubaRx1(SolarGators::DataModuleInfo::MOTORRX1_RL_MSG_ID, 0);
